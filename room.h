@@ -7,7 +7,8 @@ using namespace std;
 class Room {
 
 
-public: 
+public:
+  char description[10000];
   char place[1000];
   char item[10000];
 
@@ -16,14 +17,13 @@ public:
   bool exitE;
   bool exitW;
   
+  char* getItem();
+  char* getDescription();
+  char* getPlace();
 
-  Room(char a[]);
-  getItem();
-  getDescription();
-
-  getInventory();
-  
-
-
+  bool getNorthExit();
+  bool getSouthExit();
+  bool getEastExit();
+  bool getWestExit();
   
 };
