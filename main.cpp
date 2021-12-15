@@ -4,7 +4,6 @@
 #include "room.h"
 #include <map>
 
-
 using namespace std;
 
 void makeRooms(vector<Room*> &r);
@@ -34,7 +33,26 @@ int main(){
 
   while (cont == true){
 
+    cout << (*it)->description;
+    cout << "Where do you want to go?" << endl;
     cin >> a;
+
+    cout << "Available directions: " << endl;
+
+    if ((*it)->exitN == true){
+      cout << "North ";
+    }
+    if ((*it)->exitS == true){
+      cout << "South ";
+    }
+    if ((*it)->exitE == true){
+      cout << "East ";
+    }
+    if ((*it)->exitW == true){
+      cout << "West ";
+    }
+    cout << "" << endl;
+
 
     if (strcmp(a, "PRINTROOMS") == 0){
       for (it = r.begin(); it < r.end(); it++){
@@ -53,10 +71,7 @@ int main(){
 	}
 	if ((*it)->exitW == true){
 	  cout << "West" << endl;
-	}
-	
-
-	
+	}	
 	
       }
 
@@ -84,10 +99,8 @@ void makeRooms(vector<Room*> &r){
   
   strcpy(rp->description, "You are at the entrance of the haunted house! You feel a pretty nervous, but the\
  legendary utensil set sounds pretty cool...");
-  //rp->place = input;
 
   strcpy(rp->item, "SPOON");
-  //rp->item = input;
   
   rp->exitN = true;
   rp->exitS = false;
@@ -95,4 +108,12 @@ void makeRooms(vector<Room*> &r){
   rp->exitW = false;
   (r).push_back(rp);
 
+  // grand hall
+  strcpy(rp->place, "grand hall");
+  strcpy(rp->description, "You are in the grand hall. (add more detail)");
+  strcpy(rp->item, "");
+  (r).push_back(rp);
+
+ 
+  
 }
