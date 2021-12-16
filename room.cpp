@@ -24,25 +24,30 @@ char* Room::getPlace(){
 }
 
 bool Room::getNorthExit(){
-
-  return exitN;
+  if (exitN == true){
+    return true;
+  }
   
 }
 
 bool Room::getSouthExit(){
-
-  return exitS;
-  
+  if (exitS == true){
+    return true;
+  }
 }
 
 bool Room::getEastExit(){
-
-  return exitE;
-  
+  if (exitE == true){
+    return exitE;
+  }  
 }
 
 bool Room::getWestExit(){
+  if (exitW == true){
+    return exitW;
+  }
+}
 
-  return exitW;
-  
+int getID(){
+  return roomID;
 }
