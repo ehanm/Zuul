@@ -17,11 +17,6 @@ char* Room::getDescription(){
   
 }
 
-char* Room::getPlace(){
-
-  return place;
-  
-}
 
 bool Room::getNorthExit(){
   if (exitN == true){
@@ -48,6 +43,6 @@ bool Room::getWestExit(){
   }
 }
 
-int getID(){
+int Room::getID(){
   return roomID;
 }

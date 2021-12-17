@@ -38,7 +38,6 @@ int main(){
   
   while (cont == true){
 
-    
     for (int i = 0; i < r.size(); i++){
       if (i == locationval){
 	cout << r[i]->getDescription() << endl;
@@ -52,7 +51,7 @@ int main(){
 
     while (checkdirection == false) {
 
-    cout << "Where do you want to go?" << endl;
+    cout << "What do you do?" << endl;
 
     cout << "Available directions: ";
 
@@ -73,42 +72,48 @@ int main(){
     cin >> a;    
 
     
-    if (strcmp(a, "NORTH") == 0){
+    if (strcmp(a, "NORTH") == 0){ // north
       if (r[locationval]->exitN == false){
 	cout << "invalid direction!" << endl;
       }
       else if (r[locationval]->exitN == true) {
 
-	if(r[locationval]->roomID == 0){
+	if (r[locationval]->roomID == 0){
 	  locationval = 1;
 	}
 	checkdirection = true;
       }
     }
-    else if (strcmp(a, "SOUTH") == 0){
+    else if (strcmp(a, "SOUTH") == 0){ // south
       if (r[locationval]->exitS == false){
 	cout << "invalid direction!" << endl;
       }
       else if (r[locationval]->exitS == true) {
-	// move south
+	if (r[locationval]->roomID == 1){
+	  locationval = 0;
+	}
 	checkdirection = true;
       }
     }
-    else if (strcmp(a, "EAST") == 0){
+    else if (strcmp(a, "EAST") == 0){ // east
       if (r[locationval]->exitE == false){
 	cout << "invalid direction!" << endl;
       }
       else if (r[locationval]->exitE == true) {
-	// move east
+	if (r[locationval]->roomID == 1){
+	  locationval = 2;
+	}
 	checkdirection = true;
       }
     }
-    else if (strcmp(a, "WEST") == 0){
+    else if (strcmp(a, "WEST") == 0){ // west
       if (r[locationval]->exitW == false){
 	cout << "invalid direction!" << endl;
       }
       else if (r[locationval]->exitW == true) {
-	// move west
+	if (r[locationval]->roomID == 2){
+	  locationval = 1;
+	}
 	checkdirection = true;
       }
     }
@@ -121,7 +126,6 @@ int main(){
     if (strcmp(a, "PRINTROOMS") == 0){
       for (it = r.begin(); it < r.end(); it++){
 
-	cout << (*it)->place;
 	cout << (*it)->description;
 	cout << (*it)->item;
 	if ((*it)->exitN == true){
@@ -153,69 +157,120 @@ int main(){
 }
 
 void makeRooms(vector<Room*> &r){
-  Room* rp = new Room();
+  Room* entrance = new Room();
+  Room* grandhall = new Room();
+  Room* study = new Room();
+  Room* lavatory = new Room();
+  Room* dining = new Room();
+  Room* storage = new Room();
+  Room* kitchen = new Room();
+  Room* den = new Room();
+  Room* backyard = new Room();
+  Room* pool = new Room();
+  Room* stairs = new Room();
+  Room* hallway = new Room();
+  Room* recroom = new Room();
+  Room* bedroom = new Room();
+  Room* laundry = new Room();
   
   char input[1000];
 
+  // entrance = 0
 
-  // laundry = 14
-
-
-  // bedroom = 13
-
+  strcpy(entrance->description, "You are at the entrance of the haunted house! You feel a pretty nervous, but the legendary utensil set sounds pretty cool...\nHow lucky! You found a shiny spoon here. Just a few more utensils to go.");
+  strcpy(entrance->item, "SPOON");
+  entrance->roomID = 0;
+  entrance->exitN = true;
+  entrance->exitS = false;
+  entrance->exitE = false;
+  entrance->exitW = false;
+  r.push_back(entrance);
   
-  // rec room = 12
+  // grand hall = 1
 
-  
-  // hallway = 11
-  
-
-  // stairs = 10  
-
-
-  // pool = 9
-
-
-  // backyard = 8
-
-  
-  // den = 7
-  
-
-  // kitchen = 6
-  
-
-  // storage = 5
-  
-
-  // dining = 4
-  
-
-  // lavatory = 3
-
+  strcpy(grandhall->description, "You are in the grand hall. Unlit chandeliers hang from the ceiling, and portraits of very angry women stare into you as you go down the hallway. There doesn't seem to be any special utensils here, and these women are scary...");
+  strcpy(grandhall->item, "");
+  grandhall->roomID = 1;
+  grandhall->exitN = true;
+  grandhall->exitS = true;
+  grandhall->exitE = true;
+  grandhall->exitW = true;
+  (r).push_back(grandhall);
   
   // study = 2
 
-  // grand hall = 1
-  strcpy(rp->place, "grand hall");
-  strcpy(rp->description, "You are in the grand hall. (add more detail)");
-  strcpy(rp->item, "");
-  rp->roomID = 1;
-  (r).push_back(rp);
+  strcpy(study->description, "You are now in the study. Shelves and shelves of books surround a singular desk in the center of the room. The books look very dusty and the desk looks rotten... ");
+  strcpy(study->item, "");
+  study->roomID = 2;
+  study->exitN = false;
+  study->exitS = false;
+  study->exitE = false;
+  study->exitW = true;
+  (r).push_back(study);
+
+  // lavatory = 3
+
+  strcpy(lavatory->description, "You are in the lavatory (aka bathroom). It reeks of poop and pee. It looks like a skeleton is in the corner, his pants completely soiled. You wonder how exactly he died...\nFighting back the urge to throw up, you search the room. By some strange luck, you found the knife! In the toilet though. Not a pleasant experience.");
+  strcpy(lavatory->item, "KNIFE");
+  lavatory->roomID = 3;
+  lavatory->exitN = false;
+  lavatory->exitS = false;
+  lavatory->exitE = true;
+  lavatory->exitW = false;
+  (r).push_back(lavatory);
+
+  // dining = 4
+
+  strcpy(dining->description, "You are now in the dining hall. An absurdly long table sits there, plates of rotton food still sitting there. There is only 1 chair? Well, better get searching.");
+  strcpy(dining->item, "");
+  dining->roomID = 4;
+  dining->exitN = true;
+  dining->exitS = true;
+  dining->exitE = true;
+  dining->exitW = true;
+  (r).push_back(dining);
   
-  // entrance = 0
-  strcpy(rp->place, "entrance");
-  strcpy(rp->description, "You are at the entrance of the haunted house! You feel a pretty nervous, but the\
- legendary utensil set sounds pretty cool...");
-  strcpy(rp->item, "SPOON");
+  // storage = 5
 
-  rp->roomID = 0;
-  rp->exitN = true;
-  rp->exitS = false;
-  rp->exitE = false;
-  rp->exitW = false;
-  r.push_back(rp);
+  strcpy(storage->description, "You are now in the storage room. It looks safe enough, so you confidently walk in. Just as you thought you were safe, rats swarm you, and within seconds you reek of rat poop. Humiliated, you push through the rats to the back.\n Here, you found a special fork!");
+  strcpy(storage->item, "FORK");
+  storage->roomID = 5;
+  storage->exitN = false;
+  storage->exitS = false;
+  storage->exitE = false;
+  storage->exitW = true;
+  (r).push_back(storage);
+  
+  // kitchen = 6
 
+  strcpy(kitchen->description, "You are now in the kitchen. You excited run inside, expecting to find the rest of the set, and step on some strange substance on the floor. It sticks to your shoes though. How unlucky. \nAfter some searching, there doesn't seem to be any utensils, much to your disappointment.");
+  strcpy(kitchen->item, "");
+  kitchen->roomID = 6;
+  kitchen->exitN = false;
+  kitchen->exitS = false;
+  kitchen->exitE = true;
+  kitchen->exitW = false;
+  (r).push_back(kitchen);
+
+  // den = 7
+
+  strcpy(den->description, "You are now in the den. The fireplace is unlit, and seems like its been that way for a long time. The couch looks ragged and on the verge of collapse.
+
+  
+
+  // backyard = 8
+
+  // pool = 9
+
+  // stairs = 10
+
+  // hallway = 11
+
+  // rec room = 12
+
+  // bedroom = 13
+
+  // laundry = 14
   
   
 }
