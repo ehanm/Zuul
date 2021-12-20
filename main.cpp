@@ -254,23 +254,83 @@ void makeRooms(vector<Room*> &r){
 
   // den = 7
 
-  strcpy(den->description, "You are now in the den. The fireplace is unlit, and seems like its been that way for a long time. The couch looks ragged and on the verge of collapse.
-
-  
+  strcpy(den->description, "You are now in the den. The fireplace is unlit, and seems like its been that way for a long time. The couch looks ragged and on the verge of collapse.\nNothing shiny here...");
+  strcpy(den->item, "");
+  den->roomID = 7;
+  den->exitN = true;
+  den->exitS = true;
+  den->exitW = true;
+  den->exitE = false;
+  (r).push_back(den);
 
   // backyard = 8
 
+  strcpy(backyard->description, "You are now in the backyard. Although it looks more like a forest here. You look into the depths, and a pair of glowing orange eyes looks right back at you. How...unsettling. The place is super overgrown and there doesn't seem to be a clear path to the pool.\nIt looks like it would take forever to search the place for stuff, so you just hope that there aren't any utensils here.");
+  strcpy(backyard->item, "");
+  backyard->roomID = 8;
+  backyard->exitN = false;
+  backyard->exitS = true;
+  backyard->exitW = false;
+  backyard->exitE = true;
+  
   // pool = 9
 
+  strcpy(pool->description, "Pushing through the sharp leaves and branches, you arrive at pool, bleeding and scratched up. Your efforts are rewarded though! As you look into the pool, you found the chopsticks! How did they get here...?\nNow, time to go back...through the forest...");
+  strcpy(pool->item, "CHOPSTICKS");
+  pool->roomID = 9;
+  pool->exitN = false;
+  pool->exitS = false;
+  pool->exitW = true;
+  pool->exitE = false;
+  
   // stairs = 10
 
+  strcpy(stairs->description, "You climb the stairs. The stairs are pretty dusty and creaky, and you keep your guard up. Nothing interesting here.");
+  strcpy(stairs->item, "");
+  stairs->roomID = 10;
+  stairs->exitN = false;
+  stairs->exitS = false;
+  stairs->exitW = true;
+  stairs->exitE = true;
+  
   // hallway = 11
+
+  strcpy(hallway->description, "You are in a long hallway. Its dark, and a light seems to flicker in one of the rooms. You hear noises of distant screams... You suddenly don't feel too good.");
+  strcpy(hallway->item, "");
+  hallway->roomID = 11;
+  hallway->exitN = true;
+  hallway->exitS = true;
+  hallway->exitW = true;
+  hallway->exitE = true;
 
   // rec room = 12
 
+  strcpy(recroom->description, "You enter the room where the distant screams seem to come from. You prepare yourself, and then burst into the room, only to find a broken TV playing a terrible horror movie and a pool table that looks like someone got a little too mad at.\n You found the spork, stuck inside the TV screen!");
+  strcpy(recroom->item, "SPORK");
+  recroom->roomID = 12;
+  recroom->exitN = false;
+  recroom->exitS = true;
+  recroom->exitW = false;
+  recroom->exitE = false;
+  
   // bedroom = 13
 
+  strcpy(bedroom->description, "You enter the bedroom with the flickering lights. It's quite a nice bedroom, except for the fact that its filled with corpses.\nSome even look fresh?\nAs you walk in to investigate, the door closes behind you, and a creature that looks awfully like Barney jumps at you from under the bed.\n What follows is so violent and gruesome for this assignment that I can't go into details, but in the end, you walk away, hands covered in both your and Barney's blood, victorious. No utensil though.");
+  strcpy(bedroom->item, "");
+  bedroom->roomID = 13;
+  bedroom->exitN = false;
+  bedroom->exitS = false;
+  bedroom->exitW = false;
+  bedroom->exitE = true;
+
   // laundry = 14
-  
+
+  strcpy(laundry->description, "You don't even bother entering this room. Poop and pee smell bad enough, but ancient underwear... you just hope that you don't need to come back to find a missing utensil...");
+  strcpy(laundry->item, "");
+  laundry->roomID = 14;
+  laundry->exitN = true;
+  laundry->exitS = false;
+  laundry->exitW = false;
+  laundry->exitE = false;
   
 }
