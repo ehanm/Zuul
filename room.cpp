@@ -5,12 +5,6 @@
 
 using namespace std;
 
-char* Room::getItem(){
-
-  return item;
-  
-}
-
 char* Room::getDescription(){
 
   return description;

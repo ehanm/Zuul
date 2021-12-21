@@ -8,7 +8,12 @@ class Room {
 
 public:
   char description[10000];
-  char item[10000];
+  
+  bool hasSpoon = false;
+  bool hasKnife = false;
+  bool hasFork = false;
+  bool hasChopsticks = false;
+  bool hasSpork = false;
   
   bool exitN;
   bool exitS;
