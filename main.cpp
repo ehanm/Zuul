@@ -42,7 +42,7 @@ int main(){
       if (i == locationval){
 	cout << r[i]->getDescription() << endl;
 	cout << "" << endl;
-	cout << "Objects in the room (will be blank if nothing exists): ";
+	cout << "Objects in the room: ";
 	cout << r[i]->getItem() << endl;
       }
     }
@@ -70,16 +70,30 @@ int main(){
     cout << "" << endl;
 
     cin >> a;    
-
     
-    if (strcmp(a, "NORTH") == 0){ // north
+    if (strcmp(a, "NORTH") == 0){ // north]
       if (r[locationval]->exitN == false){
 	cout << "invalid direction!" << endl;
       }
       else if (r[locationval]->exitN == true) {
 
-	if (r[locationval]->roomID == 0){
+	if (r[locationval]->roomID == 0){ // entrance
 	  locationval = 1;
+	}
+	else if (r[locationval]->roomID == 1){ // grandhall
+	  locationval = 4;
+	}
+	else if (r[locationval]->roomID == 4){ // dining
+	  locationval = 7;
+	}
+	else if (r[locationval]->roomID == 7){ // den
+	  locationval = 8;
+	}
+	else if (r[locationval]->roomID == 11){ // hallway
+	  locationval = 12;
+	}
+	else if (r[locationval]->roomID == 14){ // laundry
+	  locationval = 11;
 	}
 	checkdirection = true;
       }
@@ -89,9 +103,25 @@ int main(){
 	cout << "invalid direction!" << endl;
       }
       else if (r[locationval]->exitS == true) {
-	if (r[locationval]->roomID == 1){
+	if (r[locationval]->roomID == 1){ // grandhall
 	  locationval = 0;
 	}
+	else if (r[locationval]->roomID == 4){ // dining
+	  locationval = 1;
+	}
+	else if (r[locationval]->roomID == 7){ // den
+	  locationval = 4;
+	}
+	else if (r[locationval]->roomID == 8){ // backyard
+	  locationval = 7;
+	} 
+	else if (r[locationval]->roomID == 12){ // recroom
+	  locationval = 11;
+	}
+	else if (r[locationval]->roomID == 11){ // hallway
+	  locationval = 14;
+	}
+					
 	checkdirection = true;
       }
     }
@@ -100,9 +130,31 @@ int main(){
 	cout << "invalid direction!" << endl;
       }
       else if (r[locationval]->exitE == true) {
-	if (r[locationval]->roomID == 1){
+	if (r[locationval]->roomID == 1){ // grandhall
 	  locationval = 2;
 	}
+	else if (r[locationval]->roomID == 4){ // dining
+	  locationval = 5;
+	}
+	else if (r[locationval]->roomID == 3){ // lavatory
+	  locationval = 1;
+	}
+	else if (r[locationval]->roomID == 6){ // kitchen
+	  locationval = 4;
+	}
+	else if (r[locationval]->roomID == 8){ // backyard
+	  locationval = 9;
+	}
+	else if (r[locationval]->roomID == 10){ // stairs
+	  locationval = 7;
+	}
+	else if (r[locationval]->roomID == 11){ // hallway
+	  locationval = 10;
+	}
+	else if (r[locationval]->roomID == 13){ // bedroom
+	  locationval = 11;
+	}
+	
 	checkdirection = true;
       }
     }
@@ -114,6 +166,28 @@ int main(){
 	if (r[locationval]->roomID == 2){
 	  locationval = 1;
 	}
+	else if (r[locationval]->roomID == 1){
+	  locationval = 3;
+	}
+	else if (r[locationval]->roomID == 5){
+	  locationval = 4;
+	}
+	else if (r[locationval]->roomID == 4){
+	  locationval = 6;
+	}
+	else if (r[locationval]->roomID == 7){
+	  locationval = 10;
+	}
+	else if (r[locationval]->roomID == 10){
+	  locationval = 11;
+	}
+	else if (r[locationval]->roomID == 9){
+	  locationval = 8;
+	}
+	else if (r[locationval]->roomID == 11){
+	  locationval = 13;
+	}
+					  
 	checkdirection = true;
       }
     }
@@ -150,6 +224,9 @@ int main(){
       cont = false;
       break;
     }
+
+    cout << "" << endl; // spacing
+    cout << "" << endl;
     
   }
   
@@ -272,6 +349,7 @@ void makeRooms(vector<Room*> &r){
   backyard->exitS = true;
   backyard->exitW = false;
   backyard->exitE = true;
+  (r).push_back(backyard);
   
   // pool = 9
 
@@ -282,6 +360,7 @@ void makeRooms(vector<Room*> &r){
   pool->exitS = false;
   pool->exitW = true;
   pool->exitE = false;
+  (r).push_back(pool);
   
   // stairs = 10
 
@@ -292,6 +371,7 @@ void makeRooms(vector<Room*> &r){
   stairs->exitS = false;
   stairs->exitW = true;
   stairs->exitE = true;
+  (r).push_back(stairs);
   
   // hallway = 11
 
@@ -302,7 +382,8 @@ void makeRooms(vector<Room*> &r){
   hallway->exitS = true;
   hallway->exitW = true;
   hallway->exitE = true;
-
+  (r).push_back(hallway);
+  
   // rec room = 12
 
   strcpy(recroom->description, "You enter the room where the distant screams seem to come from. You prepare yourself, and then burst into the room, only to find a broken TV playing a terrible horror movie and a pool table that looks like someone got a little too mad at.\n You found the spork, stuck inside the TV screen!");
@@ -312,6 +393,7 @@ void makeRooms(vector<Room*> &r){
   recroom->exitS = true;
   recroom->exitW = false;
   recroom->exitE = false;
+  (r).push_back(recroom);
   
   // bedroom = 13
 
@@ -322,6 +404,7 @@ void makeRooms(vector<Room*> &r){
   bedroom->exitS = false;
   bedroom->exitW = false;
   bedroom->exitE = true;
+  (r).push_back(bedroom);
 
   // laundry = 14
 
@@ -332,5 +415,6 @@ void makeRooms(vector<Room*> &r){
   laundry->exitS = false;
   laundry->exitW = false;
   laundry->exitE = false;
+  (r).push_back(laundry);
   
 }
