@@ -43,6 +43,10 @@ int main(){
   cout << "" << endl;
   
   while (cont == true){
+  checkdirection = false;
+
+    while (checkdirection == false) {
+
 
     for (int i = 0; i < r.size(); i++){
       if (i == locationval){
@@ -66,10 +70,6 @@ int main(){
 	}
       }
     }
-    
-    checkdirection = false;
-
-    while (checkdirection == false) {
 
     cout << "What do you do? (GO, GET, DROP, INVENTORY, QUIT)" << endl;
 
@@ -282,8 +282,61 @@ int main(){
     else if (strcmp(a, "DROP") == 0){
 
       cout << "What do you want to drop?" << endl;
+      cin >> a;
 
-      
+      if (strcmp(a, "SPOON") == 0){
+	if (spoonInv == true && r[locationval]->hasSpoon == false){
+	  spoonInv = false;
+	  r[locationval]->hasSpoon = true;
+	  cout << "SPOON dropped!" << endl;
+	}
+	else {
+	  cout << "You can't drop that!" << endl;
+	}
+      }
+
+      if (strcmp(a, "FORK") == 0){
+	if (forkInv == true && r[locationval]->hasFork == false){
+	  forkInv = false;
+	  r[locationval]->hasFork = true;
+	  cout << "FORK dropped!" << endl;
+	}
+	else {
+	  cout << "You can't drop that!" << endl;
+	}
+	
+      }
+      if (strcmp(a, "KNIFE") == 0){
+	if (knifeInv == true && r[locationval]->hasKnife == false){
+	  knifeInv = false;
+	  r[locationval]->hasKnife = true;
+	  cout << "KNIFE dropped!" << endl;
+	}
+	else{
+	  cout << "You can't drop that!" << endl;
+	}
+      }
+      if (strcmp(a, "CHOPSTICKS") == 0){
+	if (chopsticksInv == true && r[locationval]->hasChopsticks == false){
+	  knifeInv = false;
+	  r[locationval]->hasKnife = true;
+	  cout << "KNIFE dropped!" << endl;
+	}
+	else{
+	  cout << "You can't drop that!" << endl;
+	}
+
+      }
+      if (strcmp(a, "SPORK") == 0) {
+	if (sporkInv == true && r[locationval]->hasSpork == false){
+	  sporkInv = false;
+	  r[locationval]->hasSpork = true;
+	  cout << "SPORK dropped!" << endl;
+	}
+	else {
+	  cout << "You can't drop that!" << endl;
+	}
+      }
     }
 
     else if (strcmp(a, "INVENTORY") == 0){
