@@ -12,7 +12,7 @@ char* Room::getDescription(){
 }
 
 
-bool Room::getNorthExit(){
+bool Room::getNorthExit(){ // checks exits
   if (exitN == true){
     return true;
   }

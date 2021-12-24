@@ -6,21 +6,21 @@ using namespace std;
 
 class Room {
 
-public:
+public: 
   char description[10000];
   
-  bool hasSpoon = false;
+  bool hasSpoon = false; // if the room has utensil, the bool will be true
   bool hasKnife = false;
   bool hasFork = false;
   bool hasChopsticks = false;
   bool hasSpork = false;
   
-  bool exitN;
+  bool exitN; // false or true depending on where the room has 
   bool exitS;
   bool exitE;
   bool exitW;
 
-  int roomID;
+  int roomID; // each room has an ID, so manually moving between rooms is possible
   
   char* getItem();
   char* getDescription();

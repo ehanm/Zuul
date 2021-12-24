@@ -1,3 +1,7 @@
+// my take on zuul! Its a haunted house where you have to collect the legendary utensil set! have fun!
+// By: Ehan Masud
+// Completed 12/23/2021
+
 #include <iostream>
 #include <cstring>
 #include <vector>
@@ -6,7 +10,7 @@
 
 using namespace std;
 
-void makeRooms(vector<Room*> &r);
+void makeRooms(vector<Room*> &r); // prototype
 
 int main(){
 
@@ -109,7 +113,7 @@ int main(){
 
       cin >> a;
       
-      if (strcmp(a, "NORTH") == 0){ // north]
+      if (strcmp(a, "NORTH") == 0){ // north (really inefficient haha)
 	if (r[locationval]->exitN == false){
 	  cout << "invalid direction!" << endl;
 	}
@@ -235,7 +239,7 @@ int main(){
     }
     
 
-    else if (strcmp(a, "GET") == 0){
+    else if (strcmp(a, "GET") == 0){ // get function
 
       cout << "Get what?" << endl;
       cin >> a;
@@ -291,7 +295,7 @@ int main(){
       }
     }
 
-    else if (strcmp(a, "DROP") == 0){
+    else if (strcmp(a, "DROP") == 0){ // drop function
 
       cout << "What do you want to drop?" << endl;
       cin >> a;
@@ -351,7 +355,7 @@ int main(){
       }
     }
 
-    else if (strcmp(a, "INVENTORY") == 0){
+    else if (strcmp(a, "INVENTORY") == 0){ // open inventory!
 
       cout << "In inventory: ";
       
@@ -376,7 +380,7 @@ int main(){
     }
     
     
-    else if (strcmp(a, "QUIT") == 0){
+    else if (strcmp(a, "QUIT") == 0){ // type "QUIT" at any time to stop
       cont = false;
       break;
     }
@@ -400,7 +404,7 @@ int main(){
   return 0;
 }
 
-void makeRooms(vector<Room*> &r){
+void makeRooms(vector<Room*> &r){ // making rooms
   Room* entrance = new Room();
   Room* grandhall = new Room();
   Room* study = new Room();
