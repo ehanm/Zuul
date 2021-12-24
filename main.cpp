@@ -34,7 +34,7 @@ int main(){
   
   cout << "Welcome to Zuul. You are in a haunted house. ooooohhh spooky!" << endl;
   cout << "" << endl;
-  cout << "Your job is to collect the legendary utensil set: the spoon, the fork, the knife, the chopsticks, and the spork." << endl;
+  cout << "Your job is to collect the legendary utensil set: the spoon, the fork, the knife, the chopsticks, and the spork. And make it back to the start. " << endl;
   cout << "" << endl;
   cout << "Why?" << endl;
   cout << "..." << endl;
@@ -44,6 +44,16 @@ int main(){
   
   while (cont == true){
   checkdirection = false;
+
+  if (locationval == 0 && spoonInv == true && forkInv == true && chopsticksInv == true && sporkInv == true){
+
+    cout << "You emerge from the haunted house, bleeding, smelly, dirty, fatigued, and jumpy. Not an enjoyable combination." << endl;
+    cout << "But you have the legendary utensil set. Despite the pain and humiliation, you feel proud of yourself." << endl;
+    cout << "You should feel proud. I'm proud of you too. Now go home and show off the fruits of your labor." << endl;
+
+    cont = false;
+    break;
+  }
 
     while (checkdirection == false) {
 
@@ -70,6 +80,8 @@ int main(){
 	}
       }
     }
+
+    cout << "" << endl;
 
     cout << "What do you do? (GO, GET, DROP, INVENTORY, QUIT)" << endl;
 
@@ -346,16 +358,16 @@ int main(){
       if (spoonInv == true){
           cout << "SPOON ";
       }
-      else if (knifeInv == true){
+      if (knifeInv == true){
 	cout << "KNIFE ";
       }
-      else if (forkInv == true){
+      if (forkInv == true){
 	cout << "FORK ";
       }
-      else if (chopsticksInv == true){
+      if (chopsticksInv == true){
 	cout << "CHOPSTICKS ";
       }
-      else if (sporkInv == true){
+      if (sporkInv == true){
 	cout << "SPORK ";
       }
 
@@ -369,9 +381,20 @@ int main(){
       break;
     }
 
+    else if (strcmp(a, "CHEAT") == 0){ // just to test win condition haha
+
+      spoonInv = true;
+      forkInv = true;
+      knifeInv = true;
+      chopsticksInv = true;
+      sporkInv = true;
+      locationval = 0;
+      
+    }
+
     cout << "" << endl; // spacing
     cout << "" << endl;
-    
+
   }
   }
   return 0;
